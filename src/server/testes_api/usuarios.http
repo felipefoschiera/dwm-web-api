@@ -1,0 +1,19 @@
+GET http://localhost:3001/api/usuarios
+Content-Type: application/json
+###
+
+
+POST http://localhost:3001/api/usuarios
+Content-Type: application/json
+
+{
+    "nome": "Felipe Foschiera",
+    "email": "171002@upf.br",
+    "celular": "54 99982-7410"
+}
+###
+
+# Excluir usuário
+DELETE http://localhost:3001/api/usuarios/5f5ab5394282a57448e3df75
+Content-Type: application/json
+###
