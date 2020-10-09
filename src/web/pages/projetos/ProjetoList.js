@@ -30,15 +30,18 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 const columns = [
-  { id: 'nome', label: 'Nome', minWidth: 170 },
-  { id: 'email', label: 'Email', minWidth: 100 },
-  { id: 'celular', label: 'Celular', minWidth: 170 },
-  { id: 'operacoes', label: 'Operações', minWidth: 170, align: "right"}
+  { id: 'titulo', label: 'Título', minWidth: 100 },
+  { id: 'descricao', label: 'Descrição', minWidth: 150 },
+  { id: 'dataInicio', label: 'Data de Início', minWidth: 100 },
+  { id: 'dataTermino', label: 'Data de Término', minWidth: 100 },
+  { id: 'nomeDemandante', label: 'Nome do Demandante', minWidth: 100 },
+  { id: 'emailDemandante', label: 'Email do Demandante', minWidth: 120 },
+  { id: 'operacoes', label: 'Operações', minWidth: 100, align: "right"}
 ];
 
 
 
-const UsuarioList = (props) => {
+const ProjetoList = (props) => {
     
   const classes = useStyles();
 
@@ -58,7 +61,7 @@ const UsuarioList = (props) => {
     <div>
        <Button variant="contained" color="primary" size="small" 
        className={classes.button} startIcon={<AddIcon />}
-       onClick={() => props.editarUsuario(null)}>Novo</Button>
+       onClick={() => props.editarProjeto(null)}>Novo</Button>
 
       <Paper className={classes.root}>
             <TableContainer className={classes.container}>
@@ -77,7 +80,7 @@ const UsuarioList = (props) => {
                   </TableRow>
                 </TableHead>
                 <TableBody>
-                  {props.usuarios.slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage).map((row) => {
+                  {props.projetos.slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage).map((row) => {
                     return (
                       <TableRow hover role="checkbox" tabIndex={-1} key={row.code}>
                         {columns.map((column) => {
@@ -86,18 +89,19 @@ const UsuarioList = (props) => {
                             <TableCell key={column.id} align={column.align}>
                               {column.format && typeof value === 'number' ? column.format(value) : value}
                             </TableCell>
+                            
                           );
                         })}
                         <TableCell key="operacoes">
-                            <IconButton component="span" color="primary" aria-label="edit"
-                            onClick={() => props.editarUsuario(row._id)}>
-                              <EditIcon />
-                            </IconButton>
-                            <IconButton component="span" color="primary" aria-label="delete"
-                                onClick={() => props.excluirUsuario(row._id)}>
-                                  <DeleteForeverIcon />
-                            </IconButton>
-                        </TableCell>
+                          <IconButton component="span" color="primary" aria-label="edit"
+                          onClick={() => props.editarProjeto(row._id)}>
+                            <EditIcon />
+                          </IconButton>
+                          <IconButton component="span" color="primary" aria-label="delete"
+                              onClick={() => props.excluirProjeto(row._id)}>
+                                <DeleteForeverIcon />
+                          </IconButton>
+                      </TableCell>
                       </TableRow>
                     );
                   })}
@@ -107,7 +111,7 @@ const UsuarioList = (props) => {
             <TablePagination
               rowsPerPageOptions={[5, 10, 50]}
               component="div"
-              count={props.usuarios.length}
+              count={props.projetos.length}
               rowsPerPage={rowsPerPage}
               page={page}
               onChangePage={handleChangePage}
@@ -122,4 +126,4 @@ const UsuarioList = (props) => {
 
   }
 
-export default UsuarioList;
+export default ProjetoList;

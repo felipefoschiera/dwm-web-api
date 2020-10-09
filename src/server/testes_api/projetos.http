@@ -1,0 +1,22 @@
+GET http://localhost:3001/api/projetos
+Content-Type: application/json
+###
+
+
+POST http://localhost:3001/api/projetos
+Content-Type: application/json
+
+{
+    "titulo": "Projeto teste",
+    "descricao": "descricao do projeto de teste",
+    "dataInicio": "08/10/2020",
+    "dataTermino": "10/10/2020",
+    "nomeDemandante": "Felipe Foschiera",
+    "emailDemandante": "felipefoschiera@gmail.com"
+}
+###
+
+# Excluir usuário
+DELETE http://localhost:3001/api/usuarios/5f5ab5394282a57448e3df75
+Content-Type: application/json
+###
